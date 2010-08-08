@@ -1,0 +1,14 @@
+TweetCrawler
+============
+
+A WPF application that monitors twitter for a keyword and displays them in real time
+
+Installing
+----------
+
+An installer for this application can be found [here](http://matthew-steeples.appspot.com/ClickOnce/TweetCrawler/setup.exe).
+
+Requirements
+------------
+
+This application requires .NET 3.5 SP1 to be installed
