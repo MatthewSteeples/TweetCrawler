@@ -44,7 +44,8 @@ namespace TweetCrawler
                     tweetCount.Text = pendingTweets.Count + " pending tweets";
                 else
                     tweetCount.Text = string.Empty;
-                while (tweets.Count > 20)
+                
+                while (tweets.Count > 100)
                     tweets.RemoveAt(tweets.Count - 1);
 
             }
