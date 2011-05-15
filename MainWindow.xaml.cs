@@ -133,11 +133,7 @@ namespace TweetCrawler
 
         private void ClearBacklog_Click(object sender, EventArgs e)
         {
-            lock (pendingTweets)
-            {
-                pendingTweets.Clear();
-
-            }
+            pendingTweets = new Queue<Tweet>();
         }
     }
 }
