@@ -29,6 +29,10 @@ namespace TweetCrawler
             dt.Start();
             tweets.Add(new Tweet() { user = new User() });
 
+            var settings = TweetCrawler.Properties.Settings.Default;
+            Filter.Text = settings.SearchTerm;
+            Username.Text = settings.Username;
+
         }
 
         void dt_Tick(object sender, EventArgs e)
@@ -129,6 +133,11 @@ namespace TweetCrawler
             btnStopDownloading.Visibility = Visibility.Visible;
             btnStartDownloading.Visibility = Visibility.Collapsed;
             startStreaming();
+
+            var settings = TweetCrawler.Properties.Settings.Default;
+            settings.SearchTerm = Filter.Text;
+            settings.Username = Username.Text;
+            settings.Save();
         }
 
         private void ClearBacklog_Click(object sender, EventArgs e)
