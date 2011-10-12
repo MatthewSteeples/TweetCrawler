@@ -64,7 +64,7 @@ namespace TweetCrawler
             try
             {
                 AsyncCallback cb = new AsyncCallback(this.streamCallBack);
-                var req = HttpWebRequest.Create("http://stream.twitter.com/1/statuses/filter.json?track=" + Filter.Text);
+                var req = HttpWebRequest.Create("https://stream.twitter.com/1/statuses/filter.json?track=" + Filter.Text);
                 req.Credentials = new NetworkCredential(Username.Text, Password.Password);
                 req.Method = "POST";
                 req.BeginGetResponse(cb, req);
