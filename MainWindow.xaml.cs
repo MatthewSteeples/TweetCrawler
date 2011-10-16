@@ -39,7 +39,7 @@ namespace TweetCrawler
         {
             if (pendingTweets.Count > 0)
             {
-                dt.Interval = TimeSpan.FromMilliseconds(Math.Max(2000 / pendingTweets.Count, 300));
+                dt.Interval = TimeSpan.FromMilliseconds(Math.Max(2000 / pendingTweets.Count, 250));
 
                 if (updating)
                     tweets.Insert(0, pendingTweets.Dequeue());
