@@ -89,13 +89,23 @@ namespace TweetCrawler
                 {
                     using (var stream = new StreamReader(str))
                     {
-                        while (downloading)
+                        using (var debugStream = new StreamWriter(File.OpenWrite("debug.json")))
                         {
-                            var json = stream.ReadLine();
-                            var tweet = JsonConvert.DeserializeObject<Tweet>(json);
-                            lock (pendingTweets)
+                            while (downloading)
                             {
-                                pendingTweets.Enqueue(tweet);
+                                var json = stream.ReadLine();
+                                debugStream.WriteLine(json);
+                                if (!string.IsNullOrEmpty(json))
+                                {
+                                    var tweet = JsonConvert.DeserializeObject<Tweet>(json);
+                                    if (!string.IsNullOrEmpty(tweet.id))
+                                    {
+                                        lock (pendingTweets)
+                                        {
+                                            pendingTweets.Enqueue(tweet);
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
